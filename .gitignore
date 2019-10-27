@@ -1,4 +1,4 @@
-bazel-bin/
-bazel-game-dev/
-bazel-out/
-bazel-testlogs/
+bazel-bin
+bazel-game-dev
+bazel-out
+bazel-testlogs
