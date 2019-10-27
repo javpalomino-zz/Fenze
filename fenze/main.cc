@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <stdio.h>
 
+#include "engine/core/game_app"
 #include "fenze/config.pb.h"
 
 const int SCREEN_WIDTH = 640;

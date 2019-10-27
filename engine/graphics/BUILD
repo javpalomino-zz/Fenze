@@ -25,13 +25,21 @@ cc_test(
 )
 
 proto_library(
+  name = "color_proto",
+  srcs = ["color.proto"],
+)
+
+cc_proto_library(
+  name = "color_cc_proto",
+  deps = [":color_proto"],
+)
+
+proto_library(
   name = "window_proto",
   srcs = ["window.proto"]
 )
 
 cc_proto_library(
   name = "window_cc_proto",
-  deps = [
-    ":window_proto"
-  ]
+  deps = [":window_proto"],
 )
