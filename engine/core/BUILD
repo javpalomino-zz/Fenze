@@ -11,7 +11,8 @@ cc_library (
 
 cc_library(
   name = "status_or_value",
-  hdrs = ["status_or_value.h"]
+  hdrs = ["status_or_value.h"],
+  deps = [":status"],
 )
 
 cc_test(
@@ -19,6 +20,21 @@ cc_test(
   srcs = ["status_or_value_test.cc"],
   deps = [
     ":status_or_value",
+    "@gtest//:gtest",
+    "@gtest//:gtest_main",
+  ]
+)
+
+cc_library(
+  name = "status",
+  hdrs = ["status.h"]
+)
+
+cc_test(
+  name = "status_test",
+  srcs = ["status_test.cc"],
+  deps = [
+    ":status",
     "@gtest//:gtest",
     "@gtest//:gtest_main",
   ]

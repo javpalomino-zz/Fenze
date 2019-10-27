@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "engine/core/status.h"
+
 namespace engine {
 namespace core {
 
@@ -10,35 +12,30 @@ template <class T>
 class StatusOrValue {
 public:
   StatusOrValue<T>() {
-    error_ = false;
+    status_.SetError("");
   }
   const T& Value() {
     return value_;
   }
   void SetValue(const T& value) {
     value_ = value;
-    SetError("", false);
+    status_.SetSuccess();
   }
   void SetError(const std::string& error_message) {
-    SetError(error_message, true);
+    status_.SetError(error_message);
   }
   const std::string& GetErrorMessage() {
-    return message_;
+    return status_.GetErrorMessage();
   }
   bool error() {
-    return error_;
+    return status_.error();
   }
   bool success() {
-    return !error_;
+    return status_.success();
   }
 private:
   T value_;
-  bool error_;
-  std::string message_;
-  void SetError(const std::string& error_message, bool error) {
-    message_ = error_message;
-    error_ = error;
-  }
+  Status status_;
 };
 
 }

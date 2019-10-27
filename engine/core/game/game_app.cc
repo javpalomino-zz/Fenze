@@ -1,5 +1,7 @@
 #include "engine/core/game/game_app.h"
 
+#include "engine/core/status_or_value.h"
+
 namespace engine {
 namespace core {
 namespace game {
