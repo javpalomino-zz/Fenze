@@ -8,6 +8,9 @@ namespace core {
 
 class Status {
 public:
+  Status() {
+    SetSuccess();
+  }
   void SetSuccess() {
     error_ = false;
     message_ = "";
@@ -30,7 +33,7 @@ private:
   std::string message_;
 };
 
-}  //  core
-}  //  engine
+}  //  namespace core
+}  //  namespace engine
 
 #endif

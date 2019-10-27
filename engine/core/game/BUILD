@@ -8,7 +8,8 @@ cc_library(
   srcs = ["game_app.cc"],
   hdrs = [
     "game_app.h",
-    "//engine/core/updatable_instance"
+    "//engine/core/updatable_instance",
+    "//engine/core:status",
   ]
 )
 

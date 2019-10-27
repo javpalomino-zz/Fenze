@@ -38,7 +38,7 @@ private:
   Status status_;
 };
 
-}
-}
+}  //  namespace core
+}  //  namespace engine
 
 #endif
