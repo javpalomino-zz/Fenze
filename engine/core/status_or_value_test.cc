@@ -64,3 +64,29 @@ TEST(StatusOrValue, TestClassSetError) {
   EXPECT_FALSE(int_status.success());
   EXPECT_EQ(int_status.GetErrorMessage(), "Unable to get value");
 }
+
+struct TestStruct {
+  int a_;
+  std::string b_;
+  bool operator==(const TestStruct& other) const {
+    return a_ == other.a_ && b_ == other.b_;
+  }
+  TestStruct(){}
+  TestStruct(int a, std::string b):a_(a), b_(b) {}
+};
+
+TEST(StatusOrValue, TestStructSetValue) {
+  auto int_status = StatusOrValue<TestStruct>();
+  int_status.SetValue(TestStruct(1, "string"));
+  EXPECT_EQ(int_status.Value(), TestStruct(1, "string"));
+  EXPECT_FALSE(int_status.error());
+  EXPECT_TRUE(int_status.success());
+}
+
+TEST(StatusOrValue, TestStructSetError) {
+  auto int_status = StatusOrValue<std::string>();
+  int_status.SetError("Unable to get value");
+  EXPECT_TRUE(int_status.error());
+  EXPECT_FALSE(int_status.success());
+  EXPECT_EQ(int_status.GetErrorMessage(), "Unable to get value");
+}
