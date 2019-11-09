@@ -1,13 +1,15 @@
+#include <iostream>
 #include <SDL.h>
 #include <stdio.h>
 
-#include "engine/core/game_app"
+#include "engine/core/game/game_app.h"
+#include "engine/debug/debug.h"
 #include "fenze/config.pb.h"
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-int main( int argc, char* args[] )
+/*int main( int argc, char* args[] )
 {
   //The window we'll be rendering to
   SDL_Window* window = NULL;
@@ -52,6 +54,21 @@ int main( int argc, char* args[] )
   SDL_Quit();
 
   config::Config test;
+
+  return 0;
+}*/
+
+using ::engine::core::game::GameApp;
+
+int main(int argc, char* args[]) {
+  DEBUG("Start game!");
+  GameApp game_app;
+  const auto& status = game_app.Init();
+  DEBUG("Initialized!!");
+  if(status.error()) {
+    DEBUG(status.GetErrorMessage());
+    return 1;
+  }
 
   return 0;
 }

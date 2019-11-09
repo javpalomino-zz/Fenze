@@ -6,13 +6,16 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 
 cc_library (
   name = "updatable_instance",
-  hdrs = ["updatable_instance.h"]
+  hdrs = ["updatable_instance.h"],
+  deps = [":status"],
 )
 
 cc_library(
   name = "status_or_value",
   hdrs = ["status_or_value.h"],
-  deps = [":status"],
+  deps = [
+    ":status",
+  ],
 )
 
 cc_test(

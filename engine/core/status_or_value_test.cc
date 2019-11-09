@@ -90,3 +90,13 @@ TEST(StatusOrValue, TestStructSetError) {
   EXPECT_FALSE(int_status.success());
   EXPECT_EQ(int_status.GetErrorMessage(), "Unable to get value");
 }
+
+TEST(StatusOrValue, TestPointer) {
+  auto pointer_status = StatusOrValue<TestClass*>();
+  TestClass* test_class = new TestClass;
+
+  pointer_status.SetValue(test_class);
+  EXPECT_EQ(pointer_status.Value(), test_class);
+
+  delete test_class;
+}

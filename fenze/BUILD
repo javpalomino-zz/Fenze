@@ -6,7 +6,9 @@ cc_binary(
   srcs = ["main.cc"],
   deps = [
     "@sdl2//:sdl2",
-  "config_cc_proto"
+    "config_cc_proto",
+    "//engine/core/game:game_app",
+    "//engine/debug:debug",
   ]
 )
 

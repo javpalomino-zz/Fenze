@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package engine.core.game.proto;
+
+import "engine/graphics/proto/renderer_params.proto";
+
+message GameParams {
+  optional engine.graphics.proto.RendererParams renderer = 1;
+}

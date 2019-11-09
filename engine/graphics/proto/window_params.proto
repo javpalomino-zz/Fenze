@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package engine.graphics.proto;
+
+message WindowParams {
+  optional string title = 1;
+  optional int32 width = 2;
+  optional int32 height = 3;
+}

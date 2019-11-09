@@ -12,9 +12,9 @@ template <class T>
 class StatusOrValue {
 public:
   StatusOrValue<T>() {
-    status_.SetError("");
+    status_.SetSuccess();
   }
-  const T& Value() {
+  const T& Value() const {
     return value_;
   }
   void SetValue(const T& value) {
@@ -27,11 +27,14 @@ public:
   const std::string& GetErrorMessage() {
     return status_.GetErrorMessage();
   }
-  bool error() {
+  const bool& error() const {
     return status_.error();
   }
-  bool success() {
+  const bool success() {
     return status_.success();
+  }
+  const Status& status() const {
+    return status_;
   }
 private:
   T value_;

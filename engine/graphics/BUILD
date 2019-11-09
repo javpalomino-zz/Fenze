@@ -1,45 +1,17 @@
 package(default_visibility = ["//visibility:public"])
 
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test", "cc_proto_library")
-load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 
 cc_library(
-  name = "window_handler",
-  srcs = ["window_handler.cc"],
-  hdrs = ["window_handler.h"],
+  name = "renderer",
+  srcs = ["renderer.cc"],
+  hdrs = ["renderer.h"],
   deps = [
     "@sdl2//:sdl2",
-    "window_cc_proto"
-  ]
-)
-
-cc_test(
-  name = "window_handler_test",
-  srcs = ["window_handler_test.cc"],
-  deps = [
-    ":window_handler",
-    "@sdl2//:sdl2",
-    "@gtest//:gtest",
-    "@gtest//:gtest_main",
-  ]
-)
-
-proto_library(
-  name = "color_proto",
-  srcs = ["color.proto"],
-)
-
-cc_proto_library(
-  name = "color_cc_proto",
-  deps = [":color_proto"],
-)
-
-proto_library(
-  name = "window_proto",
-  srcs = ["window.proto"]
-)
-
-cc_proto_library(
-  name = "window_cc_proto",
-  deps = [":window_proto"],
+    "//engine/debug:debug",
+    "//engine/core:status",
+    "//engine/core:status_or_value",
+    "//engine/graphics/proto:renderer_params_cc_proto",
+    "//engine/graphics/proto:window_params_cc_proto",
+  ],
 )

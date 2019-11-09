@@ -19,13 +19,13 @@ public:
     message_ = error_message;
     error_ = true;
   }
-  const std::string& GetErrorMessage() {
+  const std::string GetErrorMessage() const {
     return message_;
   }
-  bool error() {
+  const bool& error() const {
     return error_;
   }
-  bool success() {
+  const bool success() {
     return !error_;
   }
 private:

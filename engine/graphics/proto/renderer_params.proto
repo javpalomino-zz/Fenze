@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+package engine.graphics.proto;
+
+import "engine/graphics/proto/window_params.proto";
+
+
+message RendererParams {
+  optional WindowParams window = 1;
+}

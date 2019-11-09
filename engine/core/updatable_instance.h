@@ -1,15 +1,19 @@
 #ifndef ENGINE_CORE_UPDATABLE_INSTANCE_H__
 #define ENGINE_CORE_UPDATABLE_INSTANCE_H__
 
+#include "engine/core/status.h"
+
 namespace engine {
 namespace core {
 
 class UpdatableInstance {
 public:
-  void Init() = virtual;
-  void Update() = virtual;
-  void Destroy() = virtual;
-}
+  virtual const Status Init() = 0;
+  //void Update() = virtual;
+  //void Destroy() = virtual;
+};
 
-}
-}
+}  //  core
+}  //  engine
+
+#endif
